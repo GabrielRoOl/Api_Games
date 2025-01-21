@@ -3,6 +3,7 @@ package br.com.devsuperior.api_games.services;
 import br.com.devsuperior.api_games.dto.GameDTO;
 import br.com.devsuperior.api_games.dto.GameMinDTO;
 import br.com.devsuperior.api_games.entities.Game;
+import br.com.devsuperior.api_games.projections.GameMinProjection;
 import br.com.devsuperior.api_games.repositories.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -30,5 +31,9 @@ public class GameService {
     }
 
 
-
+    @Transactional(readOnly = true)
+    public List<GameMinDTO> findByList(Long listId){
+        List<GameMinProjection> result = gameRepository.searchGameList(listId);
+        return result.stream().map(GameMinDTO::new).toList();
+    }
 }

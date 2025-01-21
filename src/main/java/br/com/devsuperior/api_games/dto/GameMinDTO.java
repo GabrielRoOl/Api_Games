@@ -1,6 +1,7 @@
 package br.com.devsuperior.api_games.dto;
 
 import br.com.devsuperior.api_games.entities.Game;
+import br.com.devsuperior.api_games.projections.GameMinProjection;
 
 public class GameMinDTO {
     private Long id;
@@ -10,6 +11,14 @@ public class GameMinDTO {
     private String shortDescription;
 
     public GameMinDTO(){}
+
+    public GameMinDTO(GameMinProjection projection) {
+        this.id = projection.getId();
+        this.imgUrl = projection.getImgUrl();
+        this.shortDescription = projection.getShortDescription();
+        this.title = projection.getTitle();
+        this.year = projection.getYear();
+    }
 
     public GameMinDTO(Game entity) {
         this.id = entity.getId();
