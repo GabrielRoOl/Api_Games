@@ -1,5 +1,6 @@
 package br.com.devsuperior.api_games.controllers;
 
+import br.com.devsuperior.api_games.dto.GameMinDTO;
 import br.com.devsuperior.api_games.entities.Game;
 import br.com.devsuperior.api_games.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,9 @@ public class GameController {
     private GameService gameService;
 
     @GetMapping
-    public List<Game> findAll(){
-        // List<Game> result = gameRepository.findAll();
-        // var result = gameRepository.findAll();
+    public List<GameMinDTO> findAll(){
+        // List<GameMinDTO> result = gameService.findAll();
+        // var result = gameService.findAll();
         // return result;
         return gameService.findAll();
     }
